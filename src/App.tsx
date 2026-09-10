@@ -12,7 +12,7 @@ import Contact from './pages/Contact';
 import Insights from './pages/Insights';
 import JoinAuryn from './pages/JoinAuryn';
 import Partnerships from './pages/Partnerships';
-import type { Lang } from './data';
+import type { Lang } from './types';
 
 function App() {
   const [lang, setLang] = useState<Lang>('en');

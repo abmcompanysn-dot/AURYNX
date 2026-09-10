@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Check } from 'lucide-react';
-import { contactTypes, universes, type Lang } from '../data';
+import { contactTypes, universes } from '../data';
+import type { Lang } from '../types';
 
 interface ContactProps {
   lang: Lang;

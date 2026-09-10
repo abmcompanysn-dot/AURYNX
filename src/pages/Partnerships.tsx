@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { partnerTypes, type Lang } from '../data';
+import { partnerTypes } from '../data';
+import type { Lang } from '../types';
 
 interface PartnershipsProps {
   lang: Lang;

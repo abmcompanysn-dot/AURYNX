@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { universes } from '../data';
+import { AURYN_LOGO } from '../data/constants';
 
 export default function HeroVisual() {
   const radius = 140;
@@ -61,8 +62,8 @@ export default function HeroVisual() {
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-400/20 to-amber-600/10 border border-amber-400/30 flex items-center justify-center">
-          <span className="font-display font-bold text-amber-400 text-lg">A</span>
+        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-400/20 to-amber-600/10 border border-amber-400/30 flex items-center justify-center overflow-hidden">
+          <img src={AURYN_LOGO} alt="AURYN" className="w-12 h-12 object-cover" />
         </div>
       </motion.div>
 
@@ -74,7 +75,7 @@ export default function HeroVisual() {
         return (
           <motion.div
             key={u.id}
-            className="absolute w-10 h-10 rounded-full flex items-center justify-center cursor-pointer"
+            className="absolute w-10 h-10 rounded-full flex items-center justify-center cursor-pointer overflow-hidden"
             style={{
               left: `${x}%`,
               top: `${y}%`,
@@ -88,7 +89,7 @@ export default function HeroVisual() {
             transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
             whileHover={{ scale: 1.3 }}
           >
-            <span className="text-sm">{u.icon}</span>
+            <img src={u.logo} alt={u.name} className="w-full h-full object-cover" />
           </motion.div>
         );
       })}

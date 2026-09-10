@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { innovationDomains, type Lang } from '../data';
+import { innovationDomains } from '../data';
+import type { Lang } from '../types';
 
 interface InnovationProps {
   lang: Lang;

@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { universes, type Lang } from '../data';
+import { universes } from '../data';
+import type { Lang } from '../types';
+import UniverseLogo from '../components/UniverseLogo';
 
 interface UniversePageProps {
   lang: Lang;
@@ -74,12 +76,7 @@ export default function UniversePage({ lang }: UniversePageProps) {
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl"
-                style={{ background: `${universe.color}15`, border: `1px solid ${universe.color}30` }}
-              >
-                {universe.icon}
-              </div>
+              <UniverseLogo universe={universe} size="lg" />
               <div>
                 <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: universe.color }}>
                   {universe.name}
@@ -181,7 +178,9 @@ export default function UniversePage({ lang }: UniversePageProps) {
                   to={`/universe/${u.id}`}
                   className="p-3 rounded-xl glass-light text-center hover:bg-white/[0.04] transition-colors"
                 >
-                  <span className="text-xl block mb-1">{u.icon}</span>
+                  <div className="mb-1 flex justify-center">
+                    <UniverseLogo universe={u} size="sm" showGlow={false} />
+                  </div>
                   <span className="text-xs font-medium" style={{ color: u.color }}>{u.name.replace('AURYN ', '')}</span>
                 </Link>
               ))}

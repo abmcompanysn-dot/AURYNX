@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import HeroVisual from '../components/HeroVisual';
-import { universes, type Lang } from '../data';
+import UniverseLogo from '../components/UniverseLogo';
+import { universes } from '../data';
+import type { Lang } from '../types';
 
 interface HomeProps {
   lang: Lang;
@@ -157,12 +159,7 @@ export default function Home({ lang }: HomeProps) {
                   className="group block p-6 rounded-2xl glass-light hover:bg-white/[0.04] transition-all duration-300 h-full"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
-                      style={{ background: `${universe.color}15`, border: `1px solid ${universe.color}30` }}
-                    >
-                      {universe.icon}
-                    </div>
+                    <UniverseLogo universe={universe} size="md" />
                     <span
                       className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full"
                       style={{ color: universe.color, background: `${universe.color}15` }}

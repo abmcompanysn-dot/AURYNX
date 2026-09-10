@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { universes, type Lang } from '../data';
+import { universes } from '../data';
+import type { Lang } from '../types';
+import Logo from './Logo';
+import UniverseLogo from './UniverseLogo';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -44,12 +47,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-                <span className="text-black font-bold text-sm font-display">A</span>
-              </div>
-              <span className="font-display font-bold text-xl tracking-tight">AURYN</span>
-            </Link>
+            <Logo size="md" showText={true} linkable={true} />
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
@@ -81,7 +79,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                           className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors"
                           onClick={() => setEcosystemOpen(false)}
                         >
-                          <span className="text-lg">{u.icon}</span>
+                          <UniverseLogo universe={u} size="sm" showGlow={false} />
                           <div>
                             <div className="text-sm font-medium" style={{ color: u.color }}>{u.name}</div>
                             <div className="text-xs text-gray-400">{u.domain}</div>
@@ -146,7 +144,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                       className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white"
                       onClick={() => setMobileOpen(false)}
                     >
-                      <span>{u.icon}</span>
+                      <UniverseLogo universe={u} size="sm" showGlow={false} />
                       <span style={{ color: u.color }}>{u.name}</span>
                     </Link>
                   ))}
@@ -175,11 +173,8 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-                  <span className="text-black font-bold text-sm font-display">A</span>
-                </div>
-                <span className="font-display font-bold text-xl">AURYN</span>
+              <div className="mb-4">
+                <Logo size="md" showText={true} linkable={false} />
               </div>
               <p className="text-gray-400 text-sm mb-4">{t.tagline}</p>
               <p className="text-gray-500 text-xs">One Ecosystem. Six Worlds. Limitless Impact.</p>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Sparkles } from 'lucide-react';
-import { universes, type Lang } from '../data';
+import { universes } from '../data';
+import type { Lang } from '../types';
+import UniverseLogo from '../components/UniverseLogo';
 
 interface JoinAurynProps {
   lang: Lang;
@@ -167,7 +169,7 @@ export default function JoinAuryn({ lang }: JoinAurynProps) {
                       color: u.color
                     } : {}}
                   >
-                    <span>{u.icon}</span>
+                    <UniverseLogo universe={u} size="sm" showGlow={false} />
                     <span className="truncate">{u.name.replace('AURYN ', '')}</span>
                     {form.interests.includes(u.id) && <Check size={14} className="ml-auto" />}
                   </button>

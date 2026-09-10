@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { type Lang } from '../data';
+import type { Lang } from '../types';
 
 interface InsightsProps {
   lang: Lang;

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { universes, roadmapStages, type Lang } from '../data';
+import { universes, roadmapStages } from '../data';
+import type { Lang } from '../types';
+import UniverseLogo from '../components/UniverseLogo';
 
 interface EcosystemProps {
   lang: Lang;
@@ -102,12 +104,7 @@ export default function Ecosystem({ lang }: EcosystemProps) {
                   
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-6">
-                      <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl"
-                        style={{ background: `${universe.color}15`, border: `1px solid ${universe.color}30` }}
-                      >
-                        {universe.icon}
-                      </div>
+                      <UniverseLogo universe={universe} size="lg" />
                       <span
                         className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
                         style={{ color: universe.color, background: `${universe.color}15` }}

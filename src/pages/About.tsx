@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { values, type Lang } from '../data';
+import { values } from '../data';
+import type { Lang } from '../types';
 
 interface AboutProps {
   lang: Lang;
