@@ -4,6 +4,19 @@ import { ArrowRight } from 'lucide-react';
 import { universes, roadmapStages } from '../data';
 import type { Lang } from '../types';
 import UniverseLogo from '../components/UniverseLogo';
+import { LearnIcon, CareerIcon, HealthIcon, MindIcon, EarthIcon, LifeIcon } from '../components/icons/UniverseIcons';
+
+function getIconForUniverse(id: string, size: number) {
+  switch (id) {
+    case 'learn': return <LearnIcon size={size} />;
+    case 'career': return <CareerIcon size={size} />;
+    case 'health': return <HealthIcon size={size} />;
+    case 'mind': return <MindIcon size={size} />;
+    case 'earth': return <EarthIcon size={size} />;
+    case 'life': return <LifeIcon size={size} />;
+    default: return null;
+  }
+}
 
 interface EcosystemProps {
   lang: Lang;
@@ -104,7 +117,12 @@ export default function Ecosystem({ lang }: EcosystemProps) {
                   
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-6">
-                      <UniverseLogo universe={universe} size="lg" />
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                        style={{ background: `${universe.color}10`, border: `1px solid ${universe.color}30` }}
+                      >
+                        {getIconForUniverse(universe.id, 32)}
+                      </div>
                       <span
                         className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
                         style={{ color: universe.color, background: `${universe.color}15` }}

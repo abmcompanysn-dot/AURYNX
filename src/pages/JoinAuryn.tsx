@@ -3,7 +3,19 @@ import { motion } from 'framer-motion';
 import { Check, Sparkles } from 'lucide-react';
 import { universes } from '../data';
 import type { Lang } from '../types';
-import UniverseLogo from '../components/UniverseLogo';
+import { LearnIcon, CareerIcon, HealthIcon, MindIcon, EarthIcon, LifeIcon } from '../components/icons/UniverseIcons';
+
+function getIconForUniverse(id: string, size: number) {
+  switch (id) {
+    case 'learn': return <LearnIcon size={size} />;
+    case 'career': return <CareerIcon size={size} />;
+    case 'health': return <HealthIcon size={size} />;
+    case 'mind': return <MindIcon size={size} />;
+    case 'earth': return <EarthIcon size={size} />;
+    case 'life': return <LifeIcon size={size} />;
+    default: return null;
+  }
+}
 
 interface JoinAurynProps {
   lang: Lang;
@@ -169,7 +181,7 @@ export default function JoinAuryn({ lang }: JoinAurynProps) {
                       color: u.color
                     } : {}}
                   >
-                    <UniverseLogo universe={u} size="sm" showGlow={false} />
+                    {getIconForUniverse(u.id, 20)}
                     <span className="truncate">{u.name.replace('AURYN ', '')}</span>
                     {form.interests.includes(u.id) && <Check size={14} className="ml-auto" />}
                   </button>

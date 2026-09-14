@@ -1,13 +1,25 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import HeroVisual from '../components/HeroVisual';
-import UniverseLogo from '../components/UniverseLogo';
+import Hero3DVisual from '../components/Hero3DVisual';
+import { LearnIcon, CareerIcon, HealthIcon, MindIcon, EarthIcon, LifeIcon } from '../components/icons/UniverseIcons';
 import { universes } from '../data';
 import type { Lang } from '../types';
 
 interface HomeProps {
   lang: Lang;
+}
+
+function getIconForUniverse(id: string, size: number) {
+  switch (id) {
+    case 'learn': return <LearnIcon size={size} />;
+    case 'career': return <CareerIcon size={size} />;
+    case 'health': return <HealthIcon size={size} />;
+    case 'mind': return <MindIcon size={size} />;
+    case 'earth': return <EarthIcon size={size} />;
+    case 'life': return <LifeIcon size={size} />;
+    default: return null;
+  }
 }
 
 export default function Home({ lang }: HomeProps) {
@@ -111,7 +123,7 @@ export default function Home({ lang }: HomeProps) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              <HeroVisual />
+              <Hero3DVisual />
             </motion.div>
           </div>
         </div>
@@ -159,7 +171,12 @@ export default function Home({ lang }: HomeProps) {
                   className="group block p-6 rounded-2xl glass-light hover:bg-white/[0.04] transition-all duration-300 h-full"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <UniverseLogo universe={universe} size="md" />
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      style={{ background: `${universe.color}10`, border: `1px solid ${universe.color}30` }}
+                    >
+                      {getIconForUniverse(universe.id, 24)}
+                    </div>
                     <span
                       className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full"
                       style={{ color: universe.color, background: `${universe.color}15` }}
