@@ -4,6 +4,19 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { universes } from '../data';
 import type { Lang } from '../types';
 import UniverseLogo from '../components/UniverseLogo';
+import { LearnIcon, CareerIcon, HealthIcon, MindIcon, EarthIcon, LifeIcon } from '../components/icons/UniverseIcons';
+
+function getIconForUniverse(id: string, size: number) {
+  switch (id) {
+    case 'learn': return <LearnIcon size={size} />;
+    case 'career': return <CareerIcon size={size} />;
+    case 'health': return <HealthIcon size={size} />;
+    case 'mind': return <MindIcon size={size} />;
+    case 'earth': return <EarthIcon size={size} />;
+    case 'life': return <LifeIcon size={size} />;
+    default: return null;
+  }
+}
 
 interface UniversePageProps {
   lang: Lang;
@@ -76,7 +89,12 @@ export default function UniversePage({ lang }: UniversePageProps) {
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <UniverseLogo universe={universe} size="lg" />
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                style={{ background: `${universe.color}10`, border: `1px solid ${universe.color}30` }}
+              >
+                {getIconForUniverse(universe.id, 32)}
+              </div>
               <div>
                 <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: universe.color }}>
                   {universe.name}
@@ -179,7 +197,7 @@ export default function UniversePage({ lang }: UniversePageProps) {
                   className="p-3 rounded-xl glass-light text-center hover:bg-white/[0.04] transition-colors"
                 >
                   <div className="mb-1 flex justify-center">
-                    <UniverseLogo universe={u} size="sm" showGlow={false} />
+                    {getIconForUniverse(u.id, 20)}
                   </div>
                   <span className="text-xs font-medium" style={{ color: u.color }}>{u.name.replace('AURYN ', '')}</span>
                 </Link>

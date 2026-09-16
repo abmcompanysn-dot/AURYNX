@@ -5,7 +5,19 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { universes } from '../data';
 import type { Lang } from '../types';
 import Logo from './Logo';
-import UniverseLogo from './UniverseLogo';
+import { LearnIcon, CareerIcon, HealthIcon, MindIcon, EarthIcon, LifeIcon } from './icons/UniverseIcons';
+
+function getIconForUniverse(id: string, size: number) {
+  switch (id) {
+    case 'learn': return <LearnIcon size={size} />;
+    case 'career': return <CareerIcon size={size} />;
+    case 'health': return <HealthIcon size={size} />;
+    case 'mind': return <MindIcon size={size} />;
+    case 'earth': return <EarthIcon size={size} />;
+    case 'life': return <LifeIcon size={size} />;
+    default: return null;
+  }
+}
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -79,7 +91,12 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                           className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors"
                           onClick={() => setEcosystemOpen(false)}
                         >
-                          <UniverseLogo universe={u} size="sm" showGlow={false} />
+                          <div
+                            className="w-10 h-10 rounded-lg flex items-center justify-center"
+                            style={{ background: `${u.color}10`, border: `1px solid ${u.color}30` }}
+                          >
+                            {getIconForUniverse(u.id, 20)}
+                          </div>
                           <div>
                             <div className="text-sm font-medium" style={{ color: u.color }}>{u.name}</div>
                             <div className="text-xs text-gray-400">{u.domain}</div>
@@ -144,7 +161,7 @@ export default function Layout({ children, lang, setLang }: LayoutProps) {
                       className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white"
                       onClick={() => setMobileOpen(false)}
                     >
-                      <UniverseLogo universe={u} size="sm" showGlow={false} />
+                      {getIconForUniverse(u.id, 18)}
                       <span style={{ color: u.color }}>{u.name}</span>
                     </Link>
                   ))}
