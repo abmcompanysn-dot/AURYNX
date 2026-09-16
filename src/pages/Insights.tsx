@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Lang } from '../types';
+import { INSIGHTS_COMING_SOON_IMAGE } from '../data/constants';
 
 interface InsightsProps {
   lang: Lang;
@@ -49,7 +50,14 @@ export default function Insights({ lang }: InsightsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="text-4xl mb-4">📝</div>
+            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 flex items-center justify-center">
+              <img 
+                src={INSIGHTS_COMING_SOON_IMAGE} 
+                alt="Editorial content coming soon"
+                className="w-16 h-16 object-contain"
+                loading="lazy"
+              />
+            </div>
             <h2 className="font-display text-xl font-semibold mb-3">{t.comingSoon}</h2>
             <p className="text-gray-400 leading-relaxed">{t.comingSoonDesc}</p>
           </motion.div>
