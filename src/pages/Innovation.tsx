@@ -64,7 +64,14 @@ export default function Innovation({ lang }: InnovationProps) {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <div className="text-2xl mb-3">{domain.icon}</div>
+                <div className="w-16 h-16 mb-4 rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 flex items-center justify-center">
+                  <img 
+                    src={domain.icon} 
+                    alt={domain.name}
+                    className="w-12 h-12 object-contain"
+                    loading="lazy"
+                  />
+                </div>
                 <h3 className="font-semibold text-gray-100 mb-2 group-hover:text-amber-400 transition-colors">
                   {domain.name}
                 </h3>
@@ -101,17 +108,18 @@ export default function Innovation({ lang }: InnovationProps) {
           >
             <div className="inline-flex flex-wrap justify-center gap-3">
               {innovationDomains.map((d, i) => (
-                <motion.span
+                <motion.div
                   key={d.name}
-                  className="px-4 py-2 rounded-full text-sm font-medium bg-white/[0.03] border border-white/10 text-gray-300"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-white/[0.03] border border-white/10 text-gray-300"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{ borderColor: 'rgba(201,168,76,0.4)', color: '#c9a84c' }}
                 >
-                  {d.icon} {d.name}
-                </motion.span>
+                  <img src={d.icon} alt="" className="w-4 h-4 object-contain" />
+                  <span>{d.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
